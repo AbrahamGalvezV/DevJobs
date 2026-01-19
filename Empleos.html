@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <title>Empleos</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./style.css" />
+    <!-- <script src="./script.js"></script> -->
+  </head>
+  <body>
+    <header>
+      <h1>
+        <svg
+          fill="none"
+          stroke="currentColor"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          viewBox="0 0 24 24"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <polyline points="16 18 22 12 16 6"></polyline>
+          <polyline points="8 6 2 12 8 18"></polyline>
+        </svg>
+        DevJobs
+      </h1>
+      <nav>
+        <a href="./index.html">Inicio</a>
+        <a href="./Empleos.html">Empleos</a>
+        <a href="">Empresas</a>
+        <a href="">Salarios</a>
+      </nav>
+      <div>
+        <a href="" target="_blank">Publicar empleo</a>
+        <a href="" target="_blank">Iniciar sesión</a>
+      </div>
+    </header>
+    <main>
+      <section class="jobs-search">
+        <h1>Encuentra tu proximo trabajo</h1>
+        <p>Explora miles de oportunidades en el sector tecnológico</p>
+
+        <form role="search">
+          <div class="search-bar">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              class="icon icon-tabler icons-tabler-outline icon-tabler-search"
+            >
+              <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+              <path d="M10 10m-7 0a7 7 0 1 0 14 0a7 7 0 1 0 -14 0" />
+              <path d="M21 21l-6 -6" />
+            </svg>
+            <input
+              required
+              type="text"
+              placeholder="Busca trabajos, empresas o habilidades"
+            />
+          </div>
+
+          <div class="search_filters">
+            <select name="technology" id="technology">
+              <option value="">Tecnología</option>
+              <option value="javascript">JavaScript</option>
+              <option value="python">Python</option>
+              <option value="java">Java</option>
+            </select>
+            <select name="location" id="location">
+              <option value="">Ubicación</option>
+              <option value="remoto">Remoto</option>
+              <option value="cdmx">Ciudad De México</option>
+              <option value="guadalajara">Guadalajara</option>
+            </select>
+            <select name="experience-level" id="experience-level">
+              <option value="">Nivel de experiencia</option>
+              <option value="junior">Junior</option>
+              <option value="mid">Mid-level</option>
+              <option value="senior">Senior</option>
+            </select>
+            <select name="select">
+              <option value="value0" selected>Tipo de contrato</option>
+              <option value="value1"></option>
+              <option value="value2"></option>
+              <option value="value3"></option>
+            </select>
+          </div>
+        </form>
+      </section>
+      <section class="jobs-listing">
+        <h3>Resultados de búsqueda</h3>
+        <article>
+          <div>
+            <h3>Analista de Datos</h3>
+            <small>Data Driven co. | Remoto</small>
+            <p>
+              Estamos buscando un analista de datos con experiencia en el manejo de grandes conjuntos de datos y 
+              herramientas de visualización. Se requieren conocimientos en SQL y Python
+            </p>
+          </div>
+          <button>Enviar</button>
+        </article>
+
+        <article>
+          <div>
+            <h3>Ingeniero de Software</h3>
+            <small>Tech Solutions | Remoto</small>
+            <p>
+              Buscamos un ingeniero de software con experiencia en el manejo de grandes conjuntos de datos y 
+              experiencia en JavaScript, React, Node.js. El candidato ideal debe ser capaz de trabajar en equipo 
+              y tener buenas habilidades de comunicación
+            </p>
+          </div>
+          <button>Enviar</button>
+        </article>
+        <article>
+          <div>
+            <h3>Desarrollador de Aplicaciones Móviles</h3>
+            <small>Movile Apps LID | Alicante</small>
+            <p>
+              Buscamos un desarroyador de aplicaciones móviles con experiencia en iOS y/o android. El candidato 
+              debe tener conocimientos en Swift y el desarroyo de interfaces de usuario
+            </p>
+          </div>
+          <button>Enviar</button>
+        </article>
+        <article>
+          <div>
+            <h3>Texto de prueba</h3>
+            <small>Ingeniero de DevOps | Remoto</small>
+            <p>
+              Estamos buscando un ingeniero de DevOps con experiencia en la gestión de infraestructuras en la nube, 
+              auromatización de procesos y herramientas de integración. Se requiere conocimientos en AWS, Azure o OCP
+            </p>
+          </div>
+          <button>Enviar</button>
+        </article>
+      </section>
+      <nav class="pagination">
+        <a href="#">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            class="icon icon-tabler icons-tabler-outline icon-tabler-chevron-left"
+          >
+            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+            <path d="M15 6l-6 6l6 6" />
+          </svg>
+        </a>
+        <a class="is-active" href="#">1</a>
+        <a href="#">2</a>
+        <a href="#">3</a>
+        <a href="#">4</a>
+        <a href="#">5</a>
+        <a href="#">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            class="icon icon-tabler icons-tabler-outline icon-tabler-chevron-right"
+          >
+            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+            <path d="M9 6l6 6l-6 6" />
+          </svg>
+        </a>
+      </nav>
+    </main>
+
+    <footer>
+      <small>2025 DevJobs. Todos los derechos</small>
+    </footer>
+  </body>
+</html>
