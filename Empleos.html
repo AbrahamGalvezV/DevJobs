@@ -5,7 +5,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="./style.css" />
-    <!-- <script src="./script.js"></script> -->
+    <script type="module" src="./script.js"></script>
   </head>
   <body>
     <header>
@@ -93,22 +93,24 @@
           </div>
         </form>
       </section>
+
       <section class="jobs-listing">
-        <h3>Resultados de búsqueda</h3>
-        <article>
-          <div>
-            <h3>Analista de Datos</h3>
+        <h2>Resultados de búsqueda</h2>
+        
+        <article class="job-listing-card">
+          <div class="jobs-listing">
+            <h3><a href="./analistaDeDatos.html">Analista de Datos</a></h3>
             <small>Data Driven co. | Remoto</small>
             <p>
               Estamos buscando un analista de datos con experiencia en el manejo de grandes conjuntos de datos y 
               herramientas de visualización. Se requieren conocimientos en SQL y Python
             </p>
           </div>
-          <button>Enviar</button>
+          <button class="bitton-apply-job" id="boton-importante">Aplicar</button>
         </article>
 
-        <article>
-          <div>
+        <article class="job-listing-card">
+          <div class="jobs-listing">
             <h3>Ingeniero de Software</h3>
             <small>Tech Solutions | Remoto</small>
             <p>
@@ -117,10 +119,10 @@
               y tener buenas habilidades de comunicación
             </p>
           </div>
-          <button>Enviar</button>
+          <button class="bitton-apply-job" id="boton">Aplicar</button>
         </article>
-        <article>
-          <div>
+        <article class="job-listing-card">
+          <div class="jobs-listing">
             <h3>Desarrollador de Aplicaciones Móviles</h3>
             <small>Movile Apps LID | Alicante</small>
             <p>
@@ -128,10 +130,10 @@
               debe tener conocimientos en Swift y el desarroyo de interfaces de usuario
             </p>
           </div>
-          <button>Enviar</button>
+          <button class="bitton-apply-job" id="boton">Aplicar</button>
         </article>
-        <article>
-          <div>
+        <article class="job-listing-card">
+          <div class="jobs-listing">
             <h3>Texto de prueba</h3>
             <small>Ingeniero de DevOps | Remoto</small>
             <p>
@@ -139,7 +141,7 @@
               auromatización de procesos y herramientas de integración. Se requiere conocimientos en AWS, Azure o OCP
             </p>
           </div>
-          <button>Enviar</button>
+          <button class="bitton-apply-job" id="boton">Aplicar</button>
         </article>
       </section>
       <nav class="pagination">

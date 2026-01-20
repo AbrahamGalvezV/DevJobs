@@ -68,7 +68,8 @@ header {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 2rem;
+  /* margin: 0 auto; */
+  gap: 40px;
 
   h2 {
     font-size: 1.25rem;
@@ -149,7 +150,7 @@ form>div {
   align-items: center;
   background-color: var(--input-bg);
   border-radius: 0.5rem;
-  box-shadow: 0 10px 15px -3px var(--shadow);
+  /* box-shadow: 0 10px 15px -3px var(--shadow); */
   padding: 0.5rem;
   gap: 0.5rem;
 }
@@ -214,7 +215,8 @@ main>section:nth-child(2) {
   padding-inline: 1rem;
   background-color: var(--background);
   padding-top: 2rem;
-  max-width: 42rem;
+  max-width: 1280px;
+  width: 100%;
   margin: 0 auto;
 
   &>header {
@@ -372,8 +374,7 @@ article {
 .jobs-listing {
   border: 1px solid rgba(255, 225, 225, .3);
   border-radius: 1rem;
-  width: 100%;
-  min-width: 1250px;
+  padding: 30px;
 
   article {
     background: none;
@@ -433,3 +434,61 @@ article {
     }
   }
 }
+
+.bitton-apply-job {
+  background-color: #09f;
+
+  &.is-applied {
+    background-color: rgb(39, 229, 39);
+    color: black;
+    pointer-events: none;
+  }
+}
+
+h3>a {
+  text-decoration: none;
+  color: #cbd5e1;
+
+  &a:hover {
+    text-decoration: none;
+  } 
+
+}
+
+.section-what-job {
+  width: 800px;
+  margin: 0 auto;
+  padding: 50px;
+  
+}
+
+.text-job {
+  text-align: left;
+}
+
+.article-job {
+  background-color: #1e293b;
+  padding: 25px;
+}
+
+.header-article-job {
+  border-bottom: 1px solid var(--border);
+  padding-bottom: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.content-wath-job {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.what-job-btn {
+  width: 100px;
+  justify-content: flex-end;
+}
+
+
+
