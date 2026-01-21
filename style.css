@@ -435,14 +435,15 @@ article {
   }
 }
 
-.bitton-apply-job {
+.button-apply-job {
   background-color: #09f;
 
   &.is-applied {
-    background-color: rgb(39, 229, 39);
+    background-color: #33f139;
     color: black;
     pointer-events: none;
   }
+
 }
 
 h3>a {

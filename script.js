@@ -1,15 +1,26 @@
 
-const jobsListingSection = document.querySelector('.jobs-listing')
+const botones = document.querySelectorAll('.button-apply-job')
 
-jobsListingSection.addEventListener('click', function(event) {
-    const element = event.target
-
-    if (element.classList.contains('button-apply-job')) {
-        element.textContent = '¡Aplicado!'
-        element.classList.add('is-applied')
-        element.disabled = true
-    }
+botones.forEach(boton => {
+	boton.addEventListener('click', () => {
+	  boton.textContent = '¡Aplicado!'
+    boton.classList.add('is-applied')
+	  boton.disabled = true
+	})
 })
+
+ const filter = document.querySelector('#filter-location')
+
+ filter.addEventListener('change', () => {
+    console.log(filter.value)
+ })
+
+
+
+
+
+    
+
 
 
 
