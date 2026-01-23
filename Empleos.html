@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="es">
   <head>
     <title>Empleos</title>
@@ -59,6 +59,7 @@
               <path d="M21 21l-6 -6" />
             </svg>
             <input
+              id="empleos-search-input"
               required
               type="text"
               placeholder="Busca trabajos, empresas o habilidades"
@@ -97,53 +98,78 @@
             </select>
           </div>
         </form>
+        <span id="filter-selected-value"></span>
       </section>
 
       <section class="jobs-listing">
         <h2>Resultados de búsqueda</h2>
-        
-        <article class="job-listing-card">
+
+        <article
+          data-experience="mid"
+          data-technology="python"
+          data-modalidad="cdmx"
+          class="job-listing-card"
+        >
           <div class="jobs-listing">
             <h3><a href="./analistaDeDatos.html">Analista de Datos</a></h3>
-            <small>Data Driven co. | Remoto</small>
+            <small>Data Driven co. | Ciudad de Mexico</small>
             <p>
-              Estamos buscando un analista de datos con experiencia en el manejo de grandes conjuntos de datos y 
-              herramientas de visualización. Se requieren conocimientos en SQL y Python
+              Estamos buscando un analista de datos con experiencia en el manejo
+              de grandes conjuntos de datos y herramientas de visualización. Se
+              requieren conocimientos en SQL y Python
             </p>
           </div>
           <button class="button-apply-job" id="boton">Aplicar</button>
         </article>
-
-        <article class="job-listing-card">
+        <article
+          data-experience="junior"
+          data-technology="react"
+          data-modalidad="remoto"
+          class="job-listing-card"
+        >
           <div class="jobs-listing">
             <h3>Ingeniero de Software</h3>
             <small>Tech Solutions | Remoto</small>
             <p>
-              Buscamos un ingeniero de software con experiencia en el manejo de grandes conjuntos de datos y 
-              experiencia en JavaScript, React, Node.js. El candidato ideal debe ser capaz de trabajar en equipo 
-              y tener buenas habilidades de comunicación
+              Buscamos un ingeniero de software con experiencia en el manejo de
+              grandes conjuntos de datos y experiencia en JavaScript, React,
+              Node.js. El candidato ideal debe ser capaz de trabajar en equipo y
+              tener buenas habilidades de comunicación
             </p>
           </div>
           <button class="button-apply-job" id="boton">Aplicar</button>
         </article>
-        <article class="job-listing-card">
+        <article
+          data-experience="senior"
+          data-technology="javascript"
+          data-modalidad="granada"
+          class="job-listing-card"
+        >
           <div class="jobs-listing">
             <h3>Desarrollador de Aplicaciones Móviles</h3>
-            <small>Movile Apps LID | Alicante</small>
+            <small>Movile Apps LID | Granada</small>
             <p>
-              Buscamos un desarroyador de aplicaciones móviles con experiencia en iOS y/o android. El candidato 
-              debe tener conocimientos en Swift y el desarroyo de interfaces de usuario
+              Buscamos un desarroyador de aplicaciones móviles con experiencia
+              en iOS y/o android. El candidato debe tener conocimientos en Swift
+              y el desarroyo de interfaces de usuario JavaScript
             </p>
           </div>
           <button class="button-apply-job" id="boton">Aplicar</button>
         </article>
-        <article class="job-listing-card">
+        <article
+          data-experience="lead"
+          data-technology="java"
+          data-modalidad="monterrey"
+          class="job-listing-card"
+        >
           <div class="jobs-listing">
             <h3>Texto de prueba</h3>
-            <small>Ingeniero de DevOps | Remoto</small>
+            <small>Ingeniero de DevOps | Monterrey</small>
             <p>
-              Estamos buscando un ingeniero de DevOps con experiencia en la gestión de infraestructuras en la nube, 
-              auromatización de procesos y herramientas de integración. Se requiere conocimientos en AWS, Azure o OCP
+              Estamos buscando un ingeniero de DevOps con experiencia en la
+              gestión de infraestructuras en la nube, auromatización de procesos
+              y herramientas de integración. Se requiere conocimientos en AWS,
+              Azure o OCP
             </p>
           </div>
           <button class="button-apply-job" id="boton">Aplicar</button>
