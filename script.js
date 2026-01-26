@@ -14,9 +14,9 @@ document.addEventListener("DOMContentLoaded", () => {
   const filterExperience = document.querySelector("#experience-level");
 
   const mensaje = document.querySelector("#filter-selected-value");
-  const jobs = document.querySelectorAll(".job-listing-card");
 
   function filterJobs() {
+    const jobs = document.querySelectorAll(".job-listing-card");
     const locationValue = filterLocation.value;
     const technologyValue = filterTechnology.value;
     const experienceValue = filterExperience.value;
@@ -50,4 +50,27 @@ document.addEventListener("DOMContentLoaded", () => {
   filterExperience.addEventListener("change", filterJobs);
 });
 
+const container = document.querySelector(".jobs-listing");
 
+fetch("./data.json")
+  .then((response) => {
+    return response.json();
+  })
+  .then((jobs) => {
+    jobs.forEach((job) => {
+      const article = document.createElement("article");
+      article.className = "job-listing-card";
+
+      article.dataset.modalidad = job.data.modalidad;
+      article.dataset.nivel = job.data.nivel;
+      article.dataset.tecnology = job.data.technology;
+      article.innerHTML = `<div>
+                <h3>${job.titulo}</h3>
+                    <small>${job.empresa} | ${job.ubicacion}</small>
+                <p>${job.descripcion}</p>
+            </div>
+            <button class="button-apply-job">Aplicar</button>`;
+
+      container.appendChild(article);
+    });
+  });
