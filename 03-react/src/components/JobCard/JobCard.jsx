@@ -1,6 +1,6 @@
 import data from "../../data.json";
 import { useState } from "react";
-import "./JobCard.css";
+import "./JobCard.css"
 
 export function JobCard() {
   return (
