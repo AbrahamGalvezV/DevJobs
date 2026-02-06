@@ -1,20 +1,30 @@
-import { useState } from "react";
+import { useId } from "react";
 
-export function Search() {
-  const [filters, setFilters] = useState({
-    technology: "",
-    location: "",
-    experience: "",
-  });
+export function Search ({ onSearch, onTextfilter }) {
+  const idText = useId();
+  const idTechnology = useId();
+  const idLocation = useId();
+  const idExperienceLevel = useId();
 
-  const handleChange = (e) => {
-    const { name, value } = e.target;
+  const handleSubmit = (e) => {
+    e.preventDefault();
 
-    setFilters((prev) => ({
-      ...prev,
-      [name]: value,
-    }));
+    const formData = new FormData(e.target);
+
+    const filters = {
+      search: formData.get(idText),
+      technology: formData.get(idTechnology),
+      location: formData.get(idLocation),
+      experienceLevel: formData.get(idExperienceLevel),
+    };
+
+    onSearch(filters)
   };
+
+  const handleTextChange = (e) => {
+    const text = e.target.value
+    onTextfilter(text)
+  }
 
 
   return (
@@ -22,7 +32,7 @@ export function Search() {
       <h1>Encuentra tu proximo trabajo</h1>
       <p>Explora miles de oportunidades en el sector tecnológico</p>
 
-      <form role="search">
+      <form onSubmit={handleSubmit} id="empleos-search" role="search">
         <div className="search-bar">
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -42,19 +52,22 @@ export function Search() {
           </svg>
 
           <input
+            name={idText}
             id="empleos-search-input"
             required
             type="text"
             placeholder="Busca trabajos, empresas o habilidades"
+            onChange={handleTextChange}
           />
+          <button type="submit">Buscar</button>
         </div>
 
         <div className="search_filters">
           <select
-            name="technology"
+            name={idTechnology}
             id="filter-technology"
-            value={filters.technology}
-            onChange={handleChange}
+            // value={filters.technology}
+            // onChange={handleChange}
           >
             <option value="">Tecnología</option>
             <option value="javascript">JavaScript</option>
@@ -65,10 +78,10 @@ export function Search() {
           </select>
 
           <select
-            name="location"
+            name={idLocation}
             id="filter-location"
-            value={filters.location}
-            onChange={handleChange}
+            // value={filters.location}
+            // onChange={handleChange}
           >
             <option value="">Ubicación</option>
             <option value="remoto">Remoto</option>
@@ -79,10 +92,10 @@ export function Search() {
           </select>
 
           <select
-            name="experience-level"
+            name={idExperienceLevel}
             id="experience-level"
-            value={filters.experience}
-            onChange={handleChange}
+            // value={filters.experience}
+            // onChange={handleChange}
           >
             <option value="">Nivel de experiencia</option>
             <option value="junior">Junior</option>

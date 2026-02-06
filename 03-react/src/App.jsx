@@ -4,34 +4,47 @@ import { Pagination } from "./components/Pagination/Pagination";
 import { Footer } from "./components/Footer/Footer";
 import { useState } from "react";
 import { JobListings } from "./components/JobListingCard/JobListingCard";
-import jobsData from './data.json'
-
-const RESULTS_PER_PAGE = 5
+import jobsData from "./data.json";
+const RESULTS_PER_PAGE = 5;
 
 function App() {
+  const [textToFilter, setTextToFilter] = useState("");
   const [currentPage, setCurrentPage] = useState(1);
-  const totalPages = Math.ceil(jobsData.length / RESULTS_PER_PAGE);
 
-  const pagedResults = jobsData.slice(
-    (currentPage - 1) * RESULTS_PER_PAGE, // Página 1 -> 0, página 2 -> 5, página 3 -> 10
-    currentPage * RESULTS_PER_PAGE // Página 1 -> 5, página 1 -> 10, página 2 -> 15
-  )
+  const jobsWithTextFilter =
+    textToFilter === ""
+      ? jobsData
+      : jobsData.filter((job) =>
+          job.titulo.toLowerCase().includes(textToFilter.toLowerCase()),
+        );
 
   const handlePageChange = (page) => {
     setCurrentPage(page);
-  }
+  };
+
+  const totalPages = Math.ceil(jobsWithTextFilter.length / RESULTS_PER_PAGE);
+
+  const pagedResults = jobsWithTextFilter.slice(
+    (currentPage - 1) * RESULTS_PER_PAGE,
+    currentPage * RESULTS_PER_PAGE,
+  );
+
+  const handleTextFilter = (newTextToFilter) => {
+    setTextToFilter(newTextToFilter);
+    setCurrentPage(1);
+  };
 
   return (
     <>
       <Header />
       <main>
-        <Search />
-        {/* <JobCard currentPage={currentPage}/> */}
+        <Search onTextFilter={handleTextFilter} />
         <JobListings jobs={pagedResults} />
-        <Pagination 
-        currentPage={currentPage} 
-        totalPages={totalPages} 
-        onPageChange={handlePageChange} />
+        <Pagination
+          currentPage={currentPage}
+          totalPages={totalPages}
+          onPageChange={handlePageChange}
+        />
       </main>
       <Footer />
     </>
