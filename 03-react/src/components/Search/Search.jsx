@@ -1,6 +1,6 @@
 import { useId } from "react";
 
-export function Search ({ onSearch, onTextfilter }) {
+export function Search ({ onSearch, onTextFilter }) {
   const idText = useId();
   const idTechnology = useId();
   const idLocation = useId();
@@ -12,7 +12,6 @@ export function Search ({ onSearch, onTextfilter }) {
     const formData = new FormData(e.target);
 
     const filters = {
-      search: formData.get(idText),
       technology: formData.get(idTechnology),
       location: formData.get(idLocation),
       experienceLevel: formData.get(idExperienceLevel),
@@ -23,7 +22,7 @@ export function Search ({ onSearch, onTextfilter }) {
 
   const handleTextChange = (e) => {
     const text = e.target.value
-    onTextfilter(text)
+    onTextFilter(text)
   }
 
 
@@ -54,7 +53,6 @@ export function Search ({ onSearch, onTextfilter }) {
           <input
             name={idText}
             id="empleos-search-input"
-            required
             type="text"
             placeholder="Busca trabajos, empresas o habilidades"
             onChange={handleTextChange}

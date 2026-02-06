@@ -8,26 +8,43 @@ import jobsData from "./data.json";
 const RESULTS_PER_PAGE = 5;
 
 function App() {
+  const [filters, setFilters] = useState({
+    technology: '',
+    location: '',
+    experienceLevel: '',
+  });
   const [textToFilter, setTextToFilter] = useState("");
   const [currentPage, setCurrentPage] = useState(1);
 
-  const jobsWithTextFilter =
-    textToFilter === ""
-      ? jobsData
-      : jobsData.filter((job) =>
-          job.titulo.toLowerCase().includes(textToFilter.toLowerCase()),
-        );
+  const jobsFilteredByFilters = jobsData.filter(job => {
+    return (
+      (filters.technology === '' || job.data.technology === filters.technology)
+      
+    )
+    })
+    
 
-  const handlePageChange = (page) => {
-    setCurrentPage(page);
-  };
+  const jobsWithTextFilter = textToFilter === ""
+      ? jobsFilteredByFilters
+      : jobsFilteredByFilters.filter((job) => {
+          return job.titulo.toLowerCase().includes(textToFilter.toLowerCase());
+        });
 
-  const totalPages = Math.ceil(jobsWithTextFilter.length / RESULTS_PER_PAGE);
+  const totalPages = Math.ceil(jobsData.length / RESULTS_PER_PAGE);
 
   const pagedResults = jobsWithTextFilter.slice(
     (currentPage - 1) * RESULTS_PER_PAGE,
     currentPage * RESULTS_PER_PAGE,
   );
+
+  const handlePageChange = (page) => {
+    setCurrentPage(page);
+  };
+
+  const handleSearch = (filters) => {
+    setFilters(filters)
+    setCurrentPage(1);
+  };
 
   const handleTextFilter = (newTextToFilter) => {
     setTextToFilter(newTextToFilter);
@@ -38,13 +55,15 @@ function App() {
     <>
       <Header />
       <main>
-        <Search onTextFilter={handleTextFilter} />
-        <JobListings jobs={pagedResults} />
-        <Pagination
-          currentPage={currentPage}
-          totalPages={totalPages}
-          onPageChange={handlePageChange}
-        />
+        <Search onSearch={handleSearch} onTextFilter={handleTextFilter} />
+        <section>
+          <JobListings jobs={pagedResults} />
+          <Pagination
+            currentPage={currentPage}
+            totalPages={totalPages}
+            onPageChange={handlePageChange}
+          />
+        </section>
       </main>
       <Footer />
     </>
