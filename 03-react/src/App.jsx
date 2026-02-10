@@ -5,26 +5,34 @@ import { Footer } from "./components/Footer/Footer";
 import { useState } from "react";
 import { JobListings } from "./components/JobListingCard/JobListingCard";
 import jobsData from "./data.json";
+
 const RESULTS_PER_PAGE = 5;
 
 function App() {
   const [filters, setFilters] = useState({
-    technology: '',
-    location: '',
-    experienceLevel: '',
+    technology: "",
+    location: "",
+    experienceLevel: "",
   });
   const [textToFilter, setTextToFilter] = useState("");
   const [currentPage, setCurrentPage] = useState(1);
 
-  const jobsFilteredByFilters = jobsData.filter(job => {
-    return (
-      (filters.technology === '' || job.data.technology === filters.technology)
-      
-    )
-    })
-    
+  console.log(filters);
+  
 
-  const jobsWithTextFilter = textToFilter === ""
+  const jobsFilteredByFilters = jobsData.filter((job) => {
+    
+    return (
+      (filters.technology === "" ||
+        job.data.technology === filters.technology) ||
+      (filters.location === "" || job.data.location === filters.location) ||
+      (filters.experienceLevel === "" ||
+        job.data.experienceLevel === filters.experienceLevel)
+    );
+  });
+
+  const jobsWithTextFilter =
+    textToFilter === ""
       ? jobsFilteredByFilters
       : jobsFilteredByFilters.filter((job) => {
           return job.titulo.toLowerCase().includes(textToFilter.toLowerCase());
@@ -41,8 +49,10 @@ function App() {
     setCurrentPage(page);
   };
 
+  // Search
+
   const handleSearch = (filters) => {
-    setFilters(filters)
+    setFilters(filters);
     setCurrentPage(1);
   };
 

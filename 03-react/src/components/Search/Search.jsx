@@ -14,7 +14,7 @@ export function Search ({ onSearch, onTextFilter }) {
     const filters = {
       technology: formData.get(idTechnology),
       location: formData.get(idLocation),
-      experienceLevel: formData.get(idExperienceLevel),
+      experienceLevel: formData.get(idExperienceLevel)
     };
 
     onSearch(filters)
