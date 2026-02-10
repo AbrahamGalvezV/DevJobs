@@ -7,8 +7,9 @@ export function Header() {
   return (
     <>
       <header>
-        <h1>
-          <svg
+        <a href="/" style={{ textDecoration: 'none'}}>
+          <h1 style={{color: 'white' }}>
+            <svg
             fill="none"
             stroke="currentColor"
             strokeLinecap="round"
@@ -21,10 +22,11 @@ export function Header() {
             <polyline points="8 6 2 12 8 18"></polyline>
           </svg>
           DevJobs
-        </h1>
+          </h1>
+        </a>
         <nav>
-          <a href="./index.html">Inicio</a>
-          <a href="./empleos.html">Empleos</a>
+          <a href="/">Inicio</a>
+          <a href="/search">Empleos</a>
           <a href="">Empresas</a>
           <a href="">Salarios</a>
         </nav>
