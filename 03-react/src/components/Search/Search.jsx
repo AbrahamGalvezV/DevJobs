@@ -26,6 +26,7 @@ export function Search ({ onSearch, onTextFilter }) {
   }
 
 
+
   return (
     <section className="jobs-search">
       <h1>Encuentra tu proximo trabajo</h1>

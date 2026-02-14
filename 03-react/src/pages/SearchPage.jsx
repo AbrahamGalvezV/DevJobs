@@ -3,7 +3,7 @@ import { JobListings } from "../components/JobListingCard/JobListingCard";
 import { Search } from "../components/Search/Search"
 
 import jobsData from "../data.json";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 const RESULTS_PER_PAGE = 5;
 
@@ -53,6 +53,11 @@ export function SearchPage() {
     setTextToFilter(newTextToFilter);
     setCurrentPage(1);
   };
+
+  useEffect(() => {
+    document.title = `Resutados: ${jobsWithTextFilter.length}, Págination ${currentPage} - DevJobs`;
+  }, [jobsWithTextFilter, currentPage])
+
 
   return (
     <main>

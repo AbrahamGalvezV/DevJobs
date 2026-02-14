@@ -1,22 +1,36 @@
 import { Footer } from "./components/Footer/Footer";
 import { Header } from "./components/Header/Header";
-import { NofFoundPage } from "./pages/404";
+import { NotFoundPage } from "./pages/404";
 
-import { HomePage } from "./pages/HomePage"
+import { HomePage } from "./pages/HomePage";
 import { SearchPage } from "./pages/SearchPage";
 
-
+import { useEffect, useState } from "react";
 
 function App() {
+  const [currentPath, setCurrentPath] = useState(window.location.pathname);
+  console.log(currentPath);
+  
 
-  const currentPath = window.location.pathname
+  let page = <NotFoundPage />;
 
-  let page = <NofFoundPage />
-  if (currentPath === '/') {
-    page = <HomePage />
-  } else if (currentPath === '/search') {
-    page = <SearchPage />
+  if (currentPath === "/") {
+    page = <HomePage />;
+  } else if (currentPath === "/search") {
+    page = <SearchPage />;
   }
+
+  useEffect(() => {
+    const handleLocationChange = () => {
+      setCurrentPath(window.location.pathname);
+    };
+
+    window.addEventListener("popstate", handleLocationChange);
+
+    return () => {
+      window.removeEventListener("popstate", handleLocationChange);
+    };
+  }, [])
 
   return (
     <>

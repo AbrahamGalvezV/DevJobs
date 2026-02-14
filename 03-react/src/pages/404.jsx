@@ -1,4 +1,4 @@
-export function NofFoundPage () {
+export function NotFoundPage () {
 
     return (
         <>
