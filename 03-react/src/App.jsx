@@ -1,16 +1,15 @@
 import { Footer } from "./components/Footer/Footer";
 import { Header } from "./components/Header/Header";
+import { useRouter } from "./components/Hooks/useRouter";
 import { NotFoundPage } from "./pages/404";
 
 import { HomePage } from "./pages/HomePage";
 import { SearchPage } from "./pages/SearchPage";
 
-import { useEffect, useState } from "react";
+
 
 function App() {
-  const [currentPath, setCurrentPath] = useState(window.location.pathname);
-  console.log(currentPath);
-  
+  const { currentPath } = useRouter();
 
   let page = <NotFoundPage />;
 
@@ -19,18 +18,6 @@ function App() {
   } else if (currentPath === "/search") {
     page = <SearchPage />;
   }
-
-  useEffect(() => {
-    const handleLocationChange = () => {
-      setCurrentPath(window.location.pathname);
-    };
-
-    window.addEventListener("popstate", handleLocationChange);
-
-    return () => {
-      window.removeEventListener("popstate", handleLocationChange);
-    };
-  }, [])
 
   return (
     <>
