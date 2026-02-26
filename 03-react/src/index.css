@@ -169,13 +169,15 @@ form input[type="text"] {
   border: none;
   outline: none;
   color: var(--text-primary);
-  padding: 0.75rem 0.5rem;
+  padding: 0.5rem 0.5rem;
   font-size: 1rem;
   font-family: inherit;
 }
 
 form input[type="text"]::placeholder {
   color: #64748b;
+  padding: 0.5rem 0.5rem;
+  border-radius: 0.5rem;
 }
 
 button {
@@ -357,19 +359,8 @@ article {
     flex-wrap: wrap;
     margin-top: .5rem;
   }
-
-  form {
-    width: 100%;
-    min-width: 1280px;
-  }
-
-  form div {
-    background: none;
-    box-sizing: none;
-    padding: 0;
-  }
-
 }
+
 
 .jobs-listings {
   border: 1px solid rgba(255, 225, 225, .3);
@@ -484,5 +475,12 @@ h3>a {
   justify-content: flex-end;
 }
 
+main section a {
+  color: #cbd5e1;
+  background-color: #1e293b;
+  padding: 0.75rem 1.5rem;
+  border-radius: 0.5rem;
+  text-decoration: none;
+}
 
 

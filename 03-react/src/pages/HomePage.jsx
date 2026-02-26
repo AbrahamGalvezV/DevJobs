@@ -1,4 +1,21 @@
+import { useRouter } from "../components/Hooks/useRouter"
+import { Register } from "../components/Register/Register"
+
 export function HomePage() {
+  const { navigateTo } = useRouter()
+
+  const handleSearch = (e) => {
+    e.preventDefault()
+    const formData = new FormData(e.target)
+    const searchTerm = formData.get('search')
+
+    const url = searchTerm 
+      ? `/search?text=${encodeURIComponent(searchTerm)}`
+      : '/search'
+    
+    navigateTo(url)      
+    }
+
   return (
     <main>
       <section>
@@ -11,7 +28,7 @@ export function HomePage() {
           próxima oportunidad.
         </p>
 
-        <form role="search">
+        <form role="search" onSubmit={handleSearch}>
           <div>
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -23,7 +40,6 @@ export function HomePage() {
               strokeWidth="1"
               strokeLinecap="round"
               strokeLinejoin="round"
-              className="icon icon-tabler icons-tabler-outline icon-tabler-search"
             >
               <path stroke="none" d="M0 0h24v24H0z" fill="none" />
               <path d="M10 10m-7 0a7 7 0 1 0 14 0a7 7 0 1 0 -14 0" />
@@ -31,14 +47,13 @@ export function HomePage() {
             </svg>
 
             <input
+              name="search"
               required
               type="text"
               placeholder="Buscar empleos por título, habilidad o empresa"
             />
 
-            <button disabled type="submit">
-              Buscar
-            </button>
+            <button type="submit">Buscar</button>
           </div>
         </form>
       </section>
@@ -77,54 +92,8 @@ export function HomePage() {
         </footer>
       </section>
 
-      <section>
-        <h2>Formulario de contacto</h2>
+      <Register />
 
-        <form method="post" action="/">
-          <fieldset>
-            <legend>Información personal</legend>
-
-            <div>
-              <label>
-                Nombre:
-                <input
-                  type="text"
-                  name="name"
-                  placeholder="Escriba su nombre"
-                  required
-                />
-              </label>
-            </div>
-
-            <div>
-              <label>
-                Email:
-                <input
-                  type="email"
-                  name="email"
-                  placeholder="Escriba su email"
-                  required
-                />
-              </label>
-            </div>
-          </fieldset>
-
-          <fieldset>
-            <legend>Teléfono</legend>
-
-            <div>
-              <label>
-                Teléfono:
-                <input
-                  type="tel"
-                  name="telefono"
-                  placeholder="Escriba su teléfono"
-                />
-              </label>
-            </div>
-          </fieldset>
-        </form>
-      </section>
     </main>
   );
 }

@@ -29,7 +29,7 @@ export function Header() {
           <Link href="/">Inicio</Link>
           <Link href="/search">Empleos</Link>
           <a href="">Empresas</a>
-          <a href="">Salarios</a>
+          <a href="/contacto">Register</a>
         </nav>
         {/* <div>
           <devjobs-avatar></devjobs-avatar>
