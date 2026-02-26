@@ -20,3 +20,8 @@
   border-radius: 0.5rem;
   border-style: none;
 }
+
+.register__selector {
+  color: #cbd5e1;
+  background-color: #125bd1;
+}

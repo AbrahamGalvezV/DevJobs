@@ -2,7 +2,6 @@ import { useId } from "react";
 import { useSearchForm } from "../Hooks/useSearchForm";
 
 
-
 export function Search ({ onSearch, onTextFilter }) {
   const idText = useId();
   const idTechnology = useId();
