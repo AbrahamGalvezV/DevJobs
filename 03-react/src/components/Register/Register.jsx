@@ -1,38 +1,20 @@
-import { useState } from "react";
+import { useRegisterForm } from "../Hooks/useRegisterForm"
 import "./Regiser.css";
 
+
+
 export function Register() {
-    const [formData, setFromData] = useState({
-        nombre: "",
-        apellidos: "",
-        correo: "",
-        password: "",
-        tipo: "empleo",
-        telefono: "",
-    });
-
-    const handleChange = (e) => {
-        const { name, value } = e.target;
-
-        setFromData((prev) => ({
-            ...prev,
-            [name]: value,
-        }))
-    };
-
-    const handleSubmit = (e) => {
-        e.preventDefault();
-
-        console.log("Estado actual del formulario");
-        console.log(formData);      
-    }
+  const { formData, errors, handleChange, handleSubmit } =
+    useRegisterForm  ((data) => {
+      console.log("Formulario válido:", data);
+      
+    })
 
   return (
     <section className="register">
       <h2 id="register">Registrate ya</h2>
-        
-      <form onSubmit={handleSubmit} className="register__form">
 
+      <form onSubmit={handleSubmit} className="register__form">
         <div>
           <label className="register__label">
             Nombre:
@@ -43,8 +25,8 @@ export function Register() {
               onChange={handleChange}
               className="register__input"
               placeholder="Escriba su nombre"
-              required
             />
+            {errors.nombre && <p className="error">errors.nombre</p>}
           </label>
         </div>
 
@@ -58,8 +40,8 @@ export function Register() {
               onChange={handleChange}
               className="register__input"
               placeholder="Escriba su Apellido"
-              required
             />
+            {errors.apellidos && <p className="error">errors.apellidos</p>}
           </label>
         </div>
 
@@ -73,8 +55,8 @@ export function Register() {
               onChange={handleChange}
               className="register__input"
               placeholder="Escriba su email"
-              required
-              />
+            />
+            {errors.correo && <p className="error">errors.correo</p>}
           </label>
         </div>
 
@@ -88,20 +70,20 @@ export function Register() {
               onChange={handleChange}
               className="register__input"
               placeholder="Escriba su contraseña"
-              required
             />
+            {errors.password && <p className="error">errors.password</p>}
           </label>
         </div>
 
-        <select 
+        <select
           className="register__selector"
           name="tipo"
           value={formData.tipo}
           onChange={handleChange}
-          >
-            <option value="">Categoría</option>
-            <option value="empleo">Busco empleo</option>
-            <option value="reclutador">Busco desarrollador</option>
+        >
+          <option value="">Categoría</option>
+          <option value="empleo">Busco empleo</option>
+          <option value="reclutador">Busco desarrollador</option>
         </select>
 
         <div>
@@ -115,11 +97,11 @@ export function Register() {
               className="register__input"
               placeholder="Escriba su teléfono"
             />
+            {errors.telefono && <p className="error">errors.telefono</p>}
           </label>
         </div>
 
         <button type="submit">Enviar</button>
-
       </form>
     </section>
   );
