@@ -1,4 +1,5 @@
 import {Link} from '../Link'
+import "./Header.css"
 
 
 export function Header() {
@@ -26,10 +27,31 @@ export function Header() {
           </h1>
         </Link>
         <nav>
-          <Link href="/">Inicio</Link>
-          <Link href="/search">Empleos</Link>
-          <a href="">Empresas</a>
-          <a href="/contacto">Register</a>
+          <Link 
+          href="/"
+          className={({ isActive }) => {
+            return isActive ? "nav__link active-link" : "nav__link"
+          }}>Inicio</Link>
+
+          <Link 
+          href="/search"
+          className={({ isActive }) => {
+            return isActive ? "nav__link active-link" : "nav__link"
+          }}>Empleos</Link>
+
+          <Link 
+          href=""
+          className={({ isActive }) => {
+            return isActive ? "nav__link active-link" : "nav__link"
+          }}>Empresas
+
+          </Link>
+          <Link 
+          href="/contacto"
+          className={({ isActive }) => {
+            return isActive ? "nav__link active-link" : "nav__link"
+          }}>Register</Link>
+
         </nav>
         {/* <div>
           <devjobs-avatar></devjobs-avatar>

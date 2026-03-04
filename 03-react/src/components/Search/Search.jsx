@@ -57,9 +57,9 @@ export function Search ({ onSearch, onTextFilter }) {
             <option value="">Tecnología</option>
             <option value="javascript">JavaScript</option>
             <option value="python">Python</option>
-            <option value="java">Java</option>
-            <option value="node">Node</option>
             <option value="react">React</option>
+            <option value="node">Node</option>
+            <option value="java">Java</option>
           </select>
 
           <select
@@ -73,7 +73,7 @@ export function Search ({ onSearch, onTextFilter }) {
             <option value="cdmx">Ciudad De México</option>
             <option value="guadalajara">Guadalajara</option>
             <option value="monterrey">Monterrey</option>
-            <option value="granada">Granada</option>
+            <option value="barcelona">Barcelona</option>
           </select>
 
           <select
