@@ -1,17 +1,19 @@
 import { useId } from "react";
 import { useSearchForm } from "../Hooks/useSearchForm";
 
-
-export function Search ({ onSearch, onTextFilter }) {
+export function Search({ onSearch, onTextFilter, onClearFilter, filters, initialText }) {
   const idText = useId();
   const idTechnology = useId();
   const idLocation = useId();
   const idExperienceLevel = useId();
-  const {  
-    handleSubmit, 
-    handleTextChange
-   } = useSearchForm({ idTechnology, idLocation, idExperienceLevel, onSearch, onTextFilter })
-
+  const { handleSubmit, handleTextChange } = useSearchForm({
+    idTechnology,
+    idLocation,
+    idExperienceLevel,
+    onSearch,
+    onTextFilter,
+    idText
+  });
 
   return (
     <section className="jobs-search">
@@ -43,6 +45,7 @@ export function Search ({ onSearch, onTextFilter }) {
             type="text"
             placeholder="Busca trabajos, empresas o habilidades"
             onChange={handleTextChange}
+            defaultValue={initialText}
           />
           {/* <button type="submit">Buscar</button> */}
         </div>
@@ -70,10 +73,10 @@ export function Search ({ onSearch, onTextFilter }) {
           >
             <option value="">Ubicación</option>
             <option value="remoto">Remoto</option>
-            <option value="cdmx">Ciudad De México</option>
+            <option value="cdmx">Ciudad de México</option>
             <option value="guadalajara">Guadalajara</option>
             <option value="monterrey">Monterrey</option>
-            <option value="barcelona">Barcelona</option>
+            <option value="madrid">Madrid</option>
           </select>
 
           <select
@@ -88,6 +91,12 @@ export function Search ({ onSearch, onTextFilter }) {
             <option value="senior">Senior</option>
             <option value="lead">Lead</option>
           </select>
+          {(filters.technology ||
+            filters.location ||
+            filters.experienceLevel) && (            
+//todo Al limpiar los selectores se sigue viendo los nombres de los elementos anterior mente seleccionados
+            <button onClick={onClearFilter}>Limpiar selectores</button>
+          )}
         </div>
       </form>
     </section>

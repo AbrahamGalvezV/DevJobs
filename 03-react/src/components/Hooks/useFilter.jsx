@@ -1,19 +1,44 @@
 import { useEffect, useState } from "react";
+import { useRouter } from "./useRouter";
 
 const RESULTS_PER_PAGE = 4;
 
 export const useFilters = () => {
-  const [filters, setFilters] = useState({
-    technology: "",
-    location: "",
-    experienceLevel: "",
+  const [filters, setFilters] = useState(() => {
+    const params = new URLSearchParams(window.location.search);
+    return {
+      technology: params.get('technology') || "",
+      location: params.get('location') || "",
+      experienceLevel: params.get('experienceLevel') || ""
+    };
   });
-  const [textToFilter, setTextToFilter] = useState("");
-  const [currentPage, setCurrentPage] = useState(1);
+
+  const [textToFilter, setTextToFilter] = useState(() => {
+    const params = new URLSearchParams(window.location.search);
+    return params.get("text") || "";
+  });
+
+  const [currentPage, setCurrentPage] = useState(() => {
+    const params = new URLSearchParams(window.location.search);
+    const page = Number(params.get("page"));
+    return Number.isNaN(page) ? page : 1;
+  });
 
   const [jobs, setJobs] = useState([]);
   const [total, setTotal] = useState(0);
   const [loading, setLoading] = useState(true);
+  const { navigateTo } = useRouter();
+
+  const handleClearFilter = () => {
+    setFilters({
+      technology: "",
+      location: "",
+      experienceLevel: "",
+    });
+
+    setTextToFilter("");
+    setCurrentPage(1);
+  };
 
   const totalPages = Math.ceil(total / RESULTS_PER_PAGE);
 
@@ -22,19 +47,22 @@ export const useFilters = () => {
       try {
         setLoading(true);
 
-        const params = new URLSearchParams()
-        if(textToFilter) params.append('text', textToFilter)
-        if(filters.technology) params.append('technology', filters.technology)
-        if(filters.location) params.append('type', filters.location)
-        if(filters.experienceLevel) params.append('level', filters.experienceLevel)
+        const params = new URLSearchParams();
+        if (textToFilter) params.append("text", textToFilter);
+        if (filters.technology) params.append("technology", filters.technology);
+        if (filters.location) params.append("type", filters.location);
+        if (filters.experienceLevel)
+          params.append("level", filters.experienceLevel);
 
-            const offSet = (currentPage - 1) * RESULTS_PER_PAGE
-            params.append('limit', RESULTS_PER_PAGE)
-            params.append('offset', offSet)
+        const offSet = (currentPage - 1) * RESULTS_PER_PAGE;
+        params.append("limit", RESULTS_PER_PAGE);
+        params.append("offset", offSet);
 
-        const queryParams = params.toString()
+        const queryParams = params.toString();
 
-        const response = await fetch(`https://jscamp-api.vercel.app/api/jobs?${queryParams}`);
+        const response = await fetch(
+          `https://jscamp-api.vercel.app/api/jobs?${queryParams}`,
+        );
         const json = await response.json();
 
         setJobs(json.data);
@@ -47,6 +75,24 @@ export const useFilters = () => {
     }
     fetchJobs();
   }, [filters, textToFilter, currentPage]);
+
+  useEffect(() => {
+    const params = new URLSearchParams();
+
+    if (textToFilter) params.append("text", textToFilter);
+    if (filters.technology) params.append("technology", filters.technology);
+    if (filters.location) params.append("type", filters.location);
+    if (filters.experienceLevel)
+      params.append("level", filters.experienceLevel);
+
+    if (currentPage > 1) params.append("page", currentPage);
+
+    const newUrl = params.toString()
+      ? `${window.location.pathname}?${params.toString()}`
+      : window.location.pathname;
+
+    navigateTo(newUrl);
+  }, [filters, textToFilter, currentPage, navigateTo]);
 
   const handlePageChange = (page) => {
     setCurrentPage(page);
@@ -68,8 +114,11 @@ export const useFilters = () => {
     loading,
     totalPages,
     currentPage,
+    textToFilter,
     handleSearch,
     handleTextFilter,
     handlePageChange,
+    handleClearFilter,
+    filters,
   };
 };
