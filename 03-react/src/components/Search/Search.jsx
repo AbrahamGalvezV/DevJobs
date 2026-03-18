@@ -94,7 +94,6 @@ export function Search({ onSearch, onTextFilter, onClearFilter, filters, initial
           {(filters.technology ||
             filters.location ||
             filters.experienceLevel) && (            
-//todo Al limpiar los selectores se sigue viendo los nombres de los elementos anterior mente seleccionados
             <button onClick={onClearFilter}>Limpiar selectores</button>
           )}
         </div>
