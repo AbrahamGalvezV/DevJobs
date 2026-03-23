@@ -9,7 +9,7 @@ export function Header() {
   return (
     <>
       <header>
-        <Link href="/" style={{ textDecoration: 'none' }}>
+        <Link to="/" style={{ textDecoration: 'none' }}>
           <h1 style={{color: 'white' }}>
             <svg
             fill="none"
@@ -28,26 +28,26 @@ export function Header() {
         </Link>
         <nav>
           <Link 
-          href="/"
+          to="/"
           className={({ isActive }) => {
             return isActive ? "nav__link active-link" : "nav__link"
           }}>Inicio</Link>
 
           <Link 
-          href="/search"
+          to="/search"
           className={({ isActive }) => {
             return isActive ? "nav__link active-link" : "nav__link"
           }}>Empleos</Link>
 
           <Link 
-          href=""
+          to=""
           className={({ isActive }) => {
             return isActive ? "nav__link active-link" : "nav__link"
           }}>Empresas
 
           </Link>
           <Link 
-          href="/contacto"
+          to="/contacto"
           className={({ isActive }) => {
             return isActive ? "nav__link active-link" : "nav__link"
           }}>Register</Link>

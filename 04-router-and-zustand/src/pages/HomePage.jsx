@@ -4,6 +4,8 @@ import { Register } from "../components/Register/Register"
 export function HomePage() {
   const { navigateTo } = useRouter()
 
+  
+
   const handleSearch = (e) => {
     e.preventDefault()
     const formData = new FormData(e.target)
