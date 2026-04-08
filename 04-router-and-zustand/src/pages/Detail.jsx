@@ -1,108 +1,104 @@
-import { useEffect, useState } from 'react'
-import { useParams, useNavigate } from 'react-router'
-import snarkdown from 'snarkdown'
-import styles from './detail.module.css'
+import { useState, useEffect } from "react";
+import { useNavigate, useParams } from "react-router";
+import { Link } from "../components/Link";
 
-const JobSection = ({ title, content }) => {
-  const html = snarkdown(content ?? '')
+import styles from "./detail.module.css";
+import snarkdown from "snarkdown";
+
+function JobSelection({ title, content }) {
+  const html = snarkdown(content);
 
   return (
     <section className={styles.section}>
       <h2 className={styles.sectionTitle}>{title}</h2>
-      <div className={`${styles.sectionContent} ${styles.prose}`}>
-        <div dangerouslySetInnerHTML={{ __html: html }} />
-      </div>
+
+      <div className={`${styles.sectionContent} prose`} dangerouslySetInnerHTML={{
+        __html: html
+      }} />
+ 
+
     </section>
-  )
+  );
 }
 
-export const JobDetail = () => {
-  const { jobId } = useParams()
-  const navigate = useNavigate()
+export function JobDetail() {
+  const { jobId } = useParams();
+  const navigate = useNavigate();
 
-  const [job, setJob] = useState(null)
-  const [loading, setLoading] = useState(true)
-  const [error, setError] = useState(null)
+  const [job, setJob] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
 
   useEffect(() => {
-    if (!jobId) return
-    const controller = new AbortController()
-
-    setLoading(true)
-    setError(null)
-
-    fetch(`https://jscamp-api.vercel.app/api/jobs/${jobId}`, {
-      signal: controller.signal,
-    })
+    fetch(`https://jscamp-api.vercel.app/api/jobs/${jobId}`)
       .then((response) => {
-        if (!response.ok) {
-          throw new Error('Job not found')
-        }
-        return response.json()
+        if (!response.ok) throw new Error("Job Nor Found");
+        return response.json();
       })
       .then((data) => {
-        setJob(data)
+        setJob(data);
       })
-      .catch((error) => {
-        if (error.name === 'AbortError') return
-        setError(error.message)
-        setJob(null)
+      .catch((err) => {
+        setError(err.message);
       })
       .finally(() => {
-        setLoading(false)
-      })
-
-    return () => {
-      controller.abort()
-    }
-  }, [jobId])
+        setLoading(false);
+      });
+  }, [jobId]);
 
   if (loading) {
     return (
-      <div className={styles.loading}>
-        <p>Cargando oferta...</p>
+      <div style={{ maxWidth: "1280px", margin: "0 auto", padding: "0 1rem" }}>
+        <div className={styles.loading}>
+          <p className={styles.loadingText}>Cargando...</p>
+        </div>
       </div>
-    )
+    );
   }
-
   if (error || !job) {
     return (
-      <div className={styles.notFound}>
-        <h1>Oferta no encontrada</h1>
-        <p>Puede que esta oferta haya caducado o que la URL no sea correcta.</p>
-        <button className={styles.backButton} onClick={() => navigate('/jobs')}>
-          Volver a la lista de empleos
-        </button>
+      <div style={{ maxWidth: "1280px", margin: "0 auto", padding: "0 1rem" }}>
+        <div className={styles.error}>
+          <h2 className={styles.errorTitle}>Oferta no encontrada</h2>
+          <button onClick={() => navigate("/")} className={styles.errorButton}>
+            Volver a inicio
+          </button>
+        </div>
       </div>
-    )
+    );
   }
 
   return (
-    <div className={styles.container}>
-      <nav className={styles.breadcrumb}>
-        <a href="/jobs" className={styles.breadcrumbLink}>
-          Empleos
-        </a>
-        <span className={styles.breadcrumbSeparator}>/</span>
-        <span className={styles.breadcrumbTitle}>{job.title}</span>
-      </nav>
+    <div style={{ maxWidth: "1280px", margin: "0 auto", padding: "0 1rem" }}>
+      <div className={styles.container}>
+        <nav className={styles.breadcrumb}>
+          <Link href="/search" className={styles.breadcrumbButton}>
+            Empleos
+          </Link>
+          <span className="styles.breadcrumbSeparator">/</span>
+          <span className="styles.breadcrumbCurrent">{job.titulo}</span>
+        </nav>
+      </div>
 
       <header className={styles.header}>
-        <h1 className={styles.title}>{job.title}</h1>
-        <div className={styles.meta}>
-          <p className={styles.company}>{job.company}</p>
-          <p className={styles.location}>{job.location}</p>
-        </div>
-        <button className={styles.applyButton}>Aplicar a esta oferta</button>
+        <h1 className={styles.title}>{job.titulo}</h1>
+        <p className={styles.meta}>
+          {job.empresa} · {job.ubicacion}
+        </p>
       </header>
 
-      <JobSection title="Descripción del puesto" content={job.content.description} />
+      <button className={styles.applyButton}>Aplicar ahora</button>
 
-      <JobSection title="Responsabilidades" content={job.content.responsibilities} />
-
-      <JobSection title="Requisitos" content={job.content.requirements} />
-
-      <JobSection title="Acerca de la empresa" content={job.content.about} />
+      <JobSelection
+        title="Descripción del puesto"
+        content={job.content.description}
+      />
+      <JobSelection
+        title="Responsabilidades"
+        content={job.content.responsibilities}
+      />
+      <JobSelection title="Requisitos" content={job.content.requirements} />
+      <JobSelection title="Acerca de la empresa" content={job.content.about} />
     </div>
-  )
+  );
 }

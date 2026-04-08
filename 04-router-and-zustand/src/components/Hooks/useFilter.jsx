@@ -7,9 +7,9 @@ export const useFilters = () => {
   const [filters, setFilters] = useState(() => {
     const params = new URLSearchParams(window.location.search);
     return {
-      technology: params.get('technology') || "",
-      location: params.get('location') || "",
-      experienceLevel: params.get('experienceLevel') || ""
+      technology: params.get("technology") || "",
+      location: params.get("location") || "",
+      experienceLevel: params.get("experienceLevel") || "",
     };
   });
 
@@ -21,7 +21,7 @@ export const useFilters = () => {
   const [currentPage, setCurrentPage] = useState(() => {
     const params = new URLSearchParams(window.location.search);
     const page = Number(params.get("page"));
-    return Number.isNaN(page) ? page : 1;
+    return Number.isNaN(page) || page < 1 ? 1 : page;
   });
 
   const [jobs, setJobs] = useState([]);
@@ -82,16 +82,16 @@ export const useFilters = () => {
     if (textToFilter) params.append("text", textToFilter);
     if (filters.technology) params.append("technology", filters.technology);
     if (filters.location) params.append("type", filters.location);
-    if (filters.experienceLevel)
-      params.append("level", filters.experienceLevel);
-
+    if (filters.experienceLevel) params.append("level", filters.experienceLevel);
     if (currentPage > 1) params.append("page", currentPage);
 
     const newUrl = params.toString()
       ? `${window.location.pathname}?${params.toString()}`
       : window.location.pathname;
 
-    navigateTo(newUrl);
+    if (newUrl !== window.location.pathname + window.location.search) {
+      navigateTo(newUrl);
+    }
   }, [filters, textToFilter, currentPage, navigateTo]);
 
   const handlePageChange = (page) => {
