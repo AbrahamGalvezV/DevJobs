@@ -1,6 +1,6 @@
 import { Register } from "../components/Register/Register";
 
-export function RegisterPage() {
+export default function RegisterPage() {
   return (
     <main>
       <section>

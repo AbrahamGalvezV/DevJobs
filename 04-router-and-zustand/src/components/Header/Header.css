@@ -4,5 +4,6 @@ active-link {
     text-decoration: none;
     color: black;
     border-radius: 4px;    
+    pointer-events: none;
 }
 

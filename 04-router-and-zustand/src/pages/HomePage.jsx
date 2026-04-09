@@ -1,7 +1,7 @@
 import { useRouter } from "../components/Hooks/useRouter"
 import { Register } from "../components/Register/Register"
 
-export function HomePage() {
+export default function HomePage() {
   const { navigateTo } = useRouter()
 
   

@@ -4,7 +4,7 @@ import { Search } from "../components/Search/Search";
 import { Spinner } from "../components/Spinner/Spinner";
 import { useFilters } from "../components/Hooks/useFilter";
 
-export function SearchPage() {
+export default function SearchPage() {
   const {
     jobs,
     total,
