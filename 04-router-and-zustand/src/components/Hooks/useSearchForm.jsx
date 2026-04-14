@@ -9,9 +9,8 @@ export const useSearchForm = ({ idTechnology, idLocation, idExperienceLevel, idT
     
     const formData = new FormData(e.currentTarget);
     
-    
     if (e.target.name === idText) {
-      return // Ya lo manejamos en onChange 
+      return
     }
     
     const filters = {

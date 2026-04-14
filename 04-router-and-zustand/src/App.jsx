@@ -1,5 +1,5 @@
 import { Route, Routes } from "react-router";
-import { lazy, Suspense } from "react";
+import { lazy, Suspense} from "react";
 
 import { Footer } from "./components/Footer/Footer";
 import { Header } from "./components/Header/Header";
@@ -11,6 +11,7 @@ const JobDetail = lazy(() => import("./pages/Detail"));
 const RegisterPage = lazy(() => import("./pages/RegisterPage"));
 
 function App() {
+
   return (
     <>
       <Header />

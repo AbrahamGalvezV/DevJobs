@@ -1,7 +1,7 @@
 /* pages/JobDetail.module.css */
 .container {
   padding-block: 2rem;
-  max-width: 64rem;
+  max-width: 80rem;
   margin: 0 auto;
 }
 
@@ -63,6 +63,9 @@
 }
 
 .header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   margin-bottom: 2rem;
 }
 
@@ -71,6 +74,16 @@
   font-weight: bold;
   color: var(--text-primary);
   margin-bottom: 1rem;
+}
+
+.left {
+  display: flex;
+  flex-direction: column;
+}
+
+.wrapper {
+  background-color: #041424;
+  padding: 30px;
 }
 
 .meta {

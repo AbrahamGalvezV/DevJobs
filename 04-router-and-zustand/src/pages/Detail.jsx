@@ -1,5 +1,6 @@
-import { useState, useEffect } from "react";
+import { useAuth } from "../components/Context/AuthContext";
 import { useNavigate, useParams } from "react-router";
+import { useState, useEffect } from "react";
 import { Link } from "../components/Link";
 
 import styles from "./detail.module.css";
@@ -12,13 +13,56 @@ function JobSelection({ title, content }) {
     <section className={styles.section}>
       <h2 className={styles.sectionTitle}>{title}</h2>
 
-      <div className={`${styles.sectionContent} prose`} dangerouslySetInnerHTML={{
-        __html: html
-      }} />
- 
-
+      <div
+        className={`${styles.sectionContent} prose`}
+        dangerouslySetInnerHTML={{
+          __html: html,
+        }}
+      />
     </section>
   );
+}
+
+function DetailPageBreadCrumb({ job }) {
+  return (
+    <div className={styles.container}>
+      <nav className={styles.breadcrumb}>
+        <Link href="/search" className={styles.breadcrumbButton}>
+          Empleos
+        </Link>
+        <span className="styles.breadcrumbSeparator">/</span>
+        <span className="styles.breadcrumbCurrent">{job.titulo}</span>
+      </nav>
+    </div>
+  );
+}
+
+function DetailPageHandle({ job }) {
+  return (
+    <>
+      <header className={styles.header} style={{ background: "#041424" }}>
+        <div className={styles.left}>
+          <h1 className={styles.title}>{job.titulo}</h1>
+          <p className={styles.meta}>
+            {job.empresa} · {job.ubicacion}
+          </p>
+        </div>
+        <div className="styles.applyButton">
+        <DetailApplyButton />
+        </div>
+      </header>
+    </>
+  );
+}
+
+function DetailApplyButton () {
+  const { isLoggedIn } = useAuth()
+
+  return ( 
+    <button disabled={!isLoggedIn} className={styles.applyButton}>
+      {isLoggedIn ? "Aplicar ahora" : "Iniciar sesión para aplicar"}
+    </button>
+  )
 }
 
 export default function JobDetail() {
@@ -70,35 +114,15 @@ export default function JobDetail() {
 
   return (
     <div style={{ maxWidth: "1280px", margin: "0 auto", padding: "0 1rem" }}>
-      <div className={styles.container}>
-        <nav className={styles.breadcrumb}>
-          <Link href="/search" className={styles.breadcrumbButton}>
-            Empleos
-          </Link>
-          <span className="styles.breadcrumbSeparator">/</span>
-          <span className="styles.breadcrumbCurrent">{job.titulo}</span>
-        </nav>
+      <DetailPageBreadCrumb job={job} />
+      <div className={styles.wrapper}>
+        <DetailPageHandle job={job} />
+
+        <JobSelection title="Descripción del puesto" content={job.content.description} />
+        <JobSelection title="Responsabilidades" content={job.content.responsibilities} />
+        <JobSelection title="Requisitos" content={job.content.requirements} />
+        <JobSelection title="Acerca de la empresa" content={job.content.about} />
       </div>
-
-      <header className={styles.header}>
-        <h1 className={styles.title}>{job.titulo}</h1>
-        <p className={styles.meta}>
-          {job.empresa} · {job.ubicacion}
-        </p>
-      </header>
-
-      <button className={styles.applyButton}>Aplicar ahora</button>
-
-      <JobSelection
-        title="Descripción del puesto"
-        content={job.content.description}
-      />
-      <JobSelection
-        title="Responsabilidades"
-        content={job.content.responsibilities}
-      />
-      <JobSelection title="Requisitos" content={job.content.requirements} />
-      <JobSelection title="Acerca de la empresa" content={job.content.about} />
     </div>
   );
 }
