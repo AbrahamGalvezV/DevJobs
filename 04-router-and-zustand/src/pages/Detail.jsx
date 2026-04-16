@@ -1,10 +1,11 @@
-import { useAuth } from "../components/Context/AuthContext";
 import { useNavigate, useParams } from "react-router";
 import { useState, useEffect } from "react";
 import { Link } from "../components/Link";
 
 import styles from "./detail.module.css";
 import snarkdown from "snarkdown";
+import { useAuthStore } from "../Store/authStore";
+import { useFavoritesStore } from "../Store/favoritesStore";
 
 function JobSelection({ title, content }) {
   const html = snarkdown(content);
@@ -37,6 +38,24 @@ function DetailPageBreadCrumb({ job }) {
   );
 }
 
+function DetailFavoriteButton({ jobId }) {
+  const { isFavorite, toggleFavorite } = useFavoritesStore();
+  const { isLoggedIn } = useAuthStore()
+
+
+  return (
+    <button
+    disabled={!isLoggedIn}
+      onClick={() => toggleFavorite(jobId)}
+      aria-label={
+        isFavorite(jobId) ? "Remove from favorites" : "Add to favorites"
+      }
+    >
+      {isFavorite(jobId) ? "❤️" : "🤍"}
+    </button>
+  );
+}
+
 function DetailPageHandle({ job }) {
   return (
     <>
@@ -48,21 +67,22 @@ function DetailPageHandle({ job }) {
           </p>
         </div>
         <div className="styles.applyButton">
-        <DetailApplyButton />
+          <DetailApplyButton />
+          <DetailFavoriteButton jobId={job.id} />
         </div>
       </header>
     </>
   );
 }
 
-function DetailApplyButton () {
-  const { isLoggedIn } = useAuth()
+function DetailApplyButton() {
+  const { isLoggedIn } = useAuthStore();
 
-  return ( 
+  return (
     <button disabled={!isLoggedIn} className={styles.applyButton}>
       {isLoggedIn ? "Aplicar ahora" : "Iniciar sesión para aplicar"}
     </button>
-  )
+  );
 }
 
 export default function JobDetail() {
@@ -118,10 +138,19 @@ export default function JobDetail() {
       <div className={styles.wrapper}>
         <DetailPageHandle job={job} />
 
-        <JobSelection title="Descripción del puesto" content={job.content.description} />
-        <JobSelection title="Responsabilidades" content={job.content.responsibilities} />
+        <JobSelection
+          title="Descripción del puesto"
+          content={job.content.description}
+        />
+        <JobSelection
+          title="Responsabilidades"
+          content={job.content.responsibilities}
+        />
         <JobSelection title="Requisitos" content={job.content.requirements} />
-        <JobSelection title="Acerca de la empresa" content={job.content.about} />
+        <JobSelection
+          title="Acerca de la empresa"
+          content={job.content.about}
+        />
       </div>
     </div>
   );

@@ -26,3 +26,29 @@
   transition: box-shadow 0.2s ease;
 }
 
+.actions {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+
+.details {
+  text-decoration: none;
+  color: inherit; 
+  /* background-color: #09f; */
+  padding: 0.75rem 1.5rem;
+  border-radius: 0.5rem;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s;
+  font-family: inherit;
+  font-size: 1rem;
+  white-space: nowrap;
+}
+
+.details :hover {
+  margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
