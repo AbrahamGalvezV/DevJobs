@@ -48,26 +48,25 @@ export function Header() {
           >
             Empleos
           </NavLink>
-
-          <NavLink
-            to=""
-            className={({ isActive }) => {
-              return isActive ? "nav__link active-link" : "nav__link";
-            }}
-          >
-            Empresas
-          </NavLink>
           <NavLink
             to="/contacto"
             className={({ isActive }) => {
               return isActive ? "nav__link active-link" : "nav__link";
             }}
           >
-            Register
+            Contacto
+          </NavLink>
+          <NavLink
+            to="/login"
+            className={({ isActive }) => {
+              return isActive ? "nav__link active-link" : "nav__link";
+            }}
+          >
+            Login
           </NavLink>
           {isLoggedIn && (
             <NavLink
-              clasName={({ isActive }) => (isActive ? "nav-link-active" : "")}
+              className={({ isActive }) => (isActive ? "nav-link-active" : "")}
               to="/profile"
             >
               Profile{" "}
@@ -77,7 +76,7 @@ export function Header() {
                 height="24"
                 viewBox="0 0 24 24"
                 fill="currentColor"
-                class="icon icon-tabler icons-tabler-filled icon-tabler-heart"
+                className="icon icon-tabler icons-tabler-filled icon-tabler-heart"
               >
                 <path stroke="none" d="M0 0h24v24H0z" fill="none" />
                 <path d="M6.979 3.074a6 6 0 0 1 4.988 1.425l.037 .033l.034 -.03a6 6 0 0 1 4.733 -1.44l.246 .036a6 6 0 0 1 3.364 10.008l-.18 .185l-.048 .041l-7.45 7.379a1 1 0 0 1 -1.313 .082l-.094 -.082l-7.493 -7.422a6 6 0 0 1 3.176 -10.215z" />
@@ -95,9 +94,15 @@ export function Header() {
 
 const HeaderUserButton = () => {
   const { isLoggedIn, login, logout } = useAuthStore();
+  const { clearFavorites } = useFavoritesStore()
+
+  const handleLogout = () => {
+    logout()
+    clearFavorites()
+  }
 
   return isLoggedIn ? (
-    <button onClick={logout}>Cerrar sesión</button>
+    <button onClick={handleLogout}>Cerrar sesión</button>
   ) : (
     <button onClick={login}>Iniciar sesión</button>
   );
