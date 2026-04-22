@@ -1,4 +1,4 @@
-import { useId } from "react";
+import { useId, useState } from "react";
 import { useSearchForm } from "../Hooks/useSearchForm";
 
 export function Search({ onSearch, onTextFilter, onClearFilter, filters, initialText }) {
@@ -6,7 +6,7 @@ export function Search({ onSearch, onTextFilter, onClearFilter, filters, initial
   const idTechnology = useId();
   const idLocation = useId();
   const idExperienceLevel = useId();
-  const { handleSubmit, handleTextChange } = useSearchForm({
+  const { handleSubmit, handleTextChange} = useSearchForm({
     idTechnology,
     idLocation,
     idExperienceLevel,
@@ -14,6 +14,18 @@ export function Search({ onSearch, onTextFilter, onClearFilter, filters, initial
     onTextFilter,
     idText
   });
+  const [searchTerm, setSearchTerm] = useState('');
+
+  const clearInput = () => {
+    setSearchTerm('');
+    handleTextChange({
+      target: {
+        name: idText,
+        value: ''
+      }
+    })
+  }
+  
 
   return (
     <section className="jobs-search">
@@ -43,11 +55,18 @@ export function Search({ onSearch, onTextFilter, onClearFilter, filters, initial
             name={idText}
             id="empleos-search-input"
             type="text"
+            value={searchTerm}
             placeholder="Busca trabajos, empresas o habilidades"
-            onChange={handleTextChange}
+            onChange={(e) => {
+              setSearchTerm(e.target.value);             
+              handleTextChange(e);
+            }}
             defaultValue={initialText}
           />
-          {/* <button type="submit">Buscar</button> */}
+          <button type="button" onClick={clearInput}>
+            X
+          </button>
+          
         </div>
 
         <div className="search_filters">

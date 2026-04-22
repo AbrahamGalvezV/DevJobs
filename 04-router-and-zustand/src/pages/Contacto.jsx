@@ -1,4 +1,5 @@
-import { Register } from "../components/Register/Register";
+import { Link } from "../components/Link";
+
 
 export default function RegisterPage() {
   return (
@@ -11,9 +12,6 @@ export default function RegisterPage() {
           España. Encuentra el trabajo de tus sueños uniéndote a nuestra
           plataforma
         </p>
-        <a href="#register">
-          <strong>¡REGISTRATE YA!</strong>
-        </a>
       </section>
 
       <section>
@@ -42,8 +40,6 @@ export default function RegisterPage() {
           </article>
         </header>
       </section>
-
-      <Register />
 
     </main>
   );

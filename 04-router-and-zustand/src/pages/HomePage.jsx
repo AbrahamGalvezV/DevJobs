@@ -1,5 +1,4 @@
 import { useRouter } from "../components/Hooks/useRouter"
-import { Register } from "../components/Register/Register"
 
 export default function HomePage() {
   const { navigateTo } = useRouter()
@@ -93,9 +92,7 @@ export default function HomePage() {
           </article>
         </footer>
       </section>
-
-      <Register />
-
+      
     </main>
   );
 }
