@@ -1,0 +1,176 @@
+.container {
+  min-height: calc(100vh - 200px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem 1rem;
+  box-sizing: border-box;
+}
+
+.card {
+  background: #1e293b;
+  border-radius: 1rem;
+  padding: 2.5rem;
+  width: 100%;
+  max-width: 450px;
+  box-sizing: border-box;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+}
+
+.title {
+  font-size: 2rem;
+  font-weight: bold;
+  color: var(--text-primary);
+  margin: 0 0 0.5rem;
+  text-align: center;
+}
+
+.subtitle {
+  color: var(--text-muted);
+  text-align: center;
+  margin: 0 0 2rem;
+  line-height: 1.5;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.formGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.label {
+  color: var(--text-secondary);
+  font-size: 0.875rem;
+  font-weight: 500;
+}
+
+.input {
+  width: 100%;
+  box-sizing: border-box;
+
+  background: #06182a;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 0.5rem;
+
+  padding: 0.75rem 1rem;
+
+  color: var(--text-primary);
+  font-size: 1rem;
+  font-family: inherit;
+
+  transition: border-color 0.2s, background 0.2s;
+}
+
+.input:focus {
+  outline: none;
+  border-color: #09f;
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.input::placeholder {
+  color: var(--text-muted);
+}
+
+.submitButton {
+  width: 100%;
+
+  background: #09f;
+  color: white;
+
+  border: none;
+  border-radius: 0.5rem;
+
+  padding: 0.875rem;
+
+  font-family: inherit;
+  font-size: 1rem;
+  font-weight: 600;
+
+  cursor: pointer;
+
+  transition:
+    background 0.2s,
+    transform 0.2s;
+
+  margin-top: 0.5rem;
+}
+
+.submitButton:hover {
+  background: #0088e6;
+}
+
+.submitButton:active {
+  transform: scale(0.98);
+}
+
+.footer {
+  text-align: center;
+  margin: 1.5rem 0 0;
+
+  color: var(--text-muted);
+  font-size: 0.875rem;
+
+  line-height: 1.5;
+}
+
+.link {
+  color: #09f;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.link:hover {
+  text-decoration: underline;
+}
+
+
+/* Móvil*/
+
+@media (max-width: 760px) {
+  .container {
+    min-height: calc(80vh - 120px);
+    padding: 1rem;
+  }
+
+  .card {
+    padding: 2rem;
+    border-radius: 0.75rem;
+  }
+
+  .title {
+    font-size: 1.8rem;
+  }
+
+  .subtitle {
+    font-size: 0.rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .form {
+    gap: 1rem;
+  }
+
+  .label {
+    font-size: 0.8rem;
+  }
+
+  .input {
+    padding: 0.7rem 0.8rem;
+    font-size: 0.95rem;
+  }
+
+  .submitButton {
+    padding: 0.75rem;
+    font-size: 0.95rem;
+  }
+
+  .footer {
+    font-size: 0.8rem;
+  }
+}

@@ -1,0 +1,263 @@
+/* HEADER */
+
+.header {
+  width: 100%;
+  min-height: 64px;
+
+  padding: 0.5rem 1rem;
+
+  display: flex;
+  align-items: center;
+
+  background-color: var(--background);
+  border-bottom: 1px solid var(--border);
+
+  position: relative;
+  z-index: 100;
+}
+
+/* LOGO */
+
+.logo {
+  text-decoration: none;
+  color: var(--text-primary);
+  flex-shrink: 0;
+}
+
+.logo:visited {
+  color: var(--text-primary);
+}
+
+.logo:hover {
+  text-decoration: none;
+  color: var(--text-primary);
+}
+
+.logo:active {
+  color: var(--text-primary);
+}
+
+.logo h1 {
+  margin: 0;
+
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+
+  color: var(--text-primary);
+
+  font-size: 1.5rem;
+  line-height: 1.2;
+}
+
+.logo svg {
+  width: 2rem;
+  height: 2rem;
+
+  color: var(--primary-light);
+}
+
+
+/* NAVEGACIÓN */
+
+.nav {
+  flex: 1;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  gap: 1.5rem;
+}
+
+
+/* ENLACES */
+
+.navLink {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+
+  padding: 0.5rem;
+
+  color: var(--text-secondary);
+  text-decoration: none;
+
+  font-size: 0.95rem;
+  font-weight: 500;
+
+  white-space: nowrap;
+
+  transition: color 0.2s ease;
+}
+
+.navLink:hover {
+  color: var(--primary-light);
+}
+
+
+/* ENLACE ACTIVO */
+
+.activeLink {
+  color: var(--primary-light);
+  font-weight: 700;
+}
+
+
+/* FAVORITOS */
+
+.navLink span {
+  font-size: 0.8rem;
+}
+
+
+/* BOTÓN USUARIO */
+
+.userButton {
+  padding: 0.5rem 1rem;
+
+  border: none;
+  border-radius: 0.5rem;
+
+  background-color: #334155;
+  color: var(--text-primary);
+
+  font-family: inherit;
+  font-size: 0.875rem;
+  font-weight: 700;
+
+  cursor: pointer;
+
+  white-space: nowrap;
+
+  transition: background-color 0.2s ease;
+}
+
+.userButton:hover {
+  background-color: var(--primary-hover);
+}
+
+
+/* BOTÓN HAMBURGUESA*/
+
+.menuButton {
+  display: none;
+
+  margin-left: auto;
+
+  width: 42px;
+  height: 42px;
+
+  padding: 0;
+
+  border: none;
+  border-radius: 0.5rem;
+
+  background: transparent;
+
+  cursor: pointer;
+
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  gap: 5px;
+}
+
+.menuButton span {
+  width: 24px;
+  height: 2px;
+
+  background-color: var(--text-primary);
+
+  border-radius: 2px;
+
+  transition:
+    transform 0.25s ease,
+    opacity 0.25s ease;
+}
+
+
+/* ANIMACIÓN DEL BURGER*/
+
+.menuButtonOpen span:nth-child(1) {
+  transform: translateY(7px) rotate(45deg);
+}
+
+.menuButtonOpen span:nth-child(2) {
+  opacity: 0;
+}
+
+.menuButtonOpen span:nth-child(3) {
+  transform: translateY(-7px) rotate(-45deg);
+}
+
+
+/* MÓVIL 760px O MENOS*/
+
+@media (max-width: 760px) {
+
+  .header {
+    flex-wrap: wrap;
+    padding: 0.5rem 1rem;
+    justify-content: space-between;
+  }
+
+  /* LOGO CENTRADO */
+
+  .logoHidden {
+    display: none;
+  }
+
+  .logo {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  .menuButton {
+    display: flex;
+    margin-left: auto;
+  }
+
+  .nav {
+    display: none;
+  }
+
+  .navOpen {
+    display: flex;
+    width: 100%;
+
+    margin-top: 3.5rem;
+    padding-top: 0.75rem;
+
+    flex-direction: column;
+    align-items: stretch;
+
+    gap: 0.25rem;
+
+    border-top: 1px solid var(--border);
+  }
+
+  .navOpen .navLink {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    border-radius: 0.5rem;
+  }
+
+  .navOpen .navLink:hover {
+    background-color: rgba(255, 255, 255, 0.05);
+  }
+
+  .header>.userButton {
+    display: none;
+  }
+
+  .navOpen+.userButton {
+    display: block;
+
+    width: 100%;
+    margin-top: 0.5rem;
+    padding: 0.75rem 1rem;
+  }
+}
