@@ -5,7 +5,6 @@ import { Footer } from "./components/Footer/Footer";
 import { Header } from "./components/Header/Header";
 import { ProtectedRoute } from "./components/ProtectedRoute/ProtectedRoute";
 import LoginPage from "./pages/Login/LoginPage";
-import Contact from "./pages/Contact/ContactPage"
 
 const HomePage = lazy(() => import("./pages/Home/HomePage"));
 const SearchPage = lazy(() => import("./pages/SearchPage"));
@@ -20,11 +19,11 @@ function App() {
     <>
       <Header />
       <Suspense
-        fullback={
+        fallback={
           <div
             style={{ maxWidth: "1280px", margin: "0 auto", padding: "0 1rem" }}
           >
-            Crgando...
+            Cargando...
           </div>
         }
       >
@@ -32,7 +31,7 @@ function App() {
           <Route path="/" element={<HomePage />} />
           <Route path="/search" element={<SearchPage />} />
           <Route path="/contact" element={<ContactPage />} />
-          <Route path="/regirser" element={<LoginPage />} />
+          <Route path="/register" element={<LoginPage />} />
           <Route path="/jobs/:jobId" element={<JobDetail />} />
           <Route path="/profile" element={
             <ProtectedRoute >

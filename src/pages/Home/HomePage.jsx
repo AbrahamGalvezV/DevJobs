@@ -16,7 +16,7 @@ export default function HomePage() {
       <section className={styles.hero}>
         <img
           className={styles.heroImg}
-          src="./background.jpg"
+          src="../../assets/background.jpg"
           alt="Desarrollador trabajando"
         />
 
