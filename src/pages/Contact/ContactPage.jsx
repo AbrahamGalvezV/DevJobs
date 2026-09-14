@@ -1,3 +1,4 @@
+import backGround from "../../assets/background.jpg"
 import styles from "./ContactPage.module.css";
 
 export default function ContactPage() {
@@ -8,7 +9,7 @@ export default function ContactPage() {
       <section className={styles.hero}>
         <img
           className={styles.heroImg}
-          src="./background.jpg"
+          src={backGround}
           alt=""
         />
 

@@ -1,6 +1,8 @@
 import { useFilters } from "../../components/Hooks/useFilter";
 import { Search } from "../../components/Search/Search";
+import backGround from "../../assets/background.jpg"
 import styles from "./HomePage.module.css";
+import { Link } from "../../components/Link";
 
 export default function HomePage() {
   const {
@@ -16,7 +18,7 @@ export default function HomePage() {
       <section className={styles.hero}>
         <img
           className={styles.heroImg}
-          src="../../assets/background.jpg"
+          src={backGround}
           alt="Desarrollador trabajando"
         />
 
@@ -141,9 +143,9 @@ export default function HomePage() {
           acorde a tu perfil.
         </p>
 
-        <a href="/search" className={styles.ctaButton}>
+        <Link href="/search" className={styles.ctaButton}>
           Ver ofertas de empleo
-        </a>
+        </Link>
       </section>
     </main>
   );
