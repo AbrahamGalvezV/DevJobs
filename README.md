@@ -50,7 +50,13 @@ El proyecto permite buscar ofertas, aplicar diferentes filtros, consultar el det
 
 Las ofertas de empleo se obtienen desde:
 
+## 🎓 Formación
+
+Este proyecto forma parte de la formación realizada en el curso de desarrollo web impartido por **Miguel Ángel Durán García**, conocido como [midudev](https://github.com/midudev).
+
+La formación me ha permitido seguir profundizando en React, mejorar mis conocimientos de desarrollo frontend y aplicar buenas prácticas durante la construcción de la aplicación.
+
 **JSCamp API**
 
 ```text
-https://jscamp-api.vercel.app/api/jobs
+https://www.jscamp.dev/

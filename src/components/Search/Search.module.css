@@ -54,3 +54,50 @@
 .jobsSearch_h1 {
   padding-top: 36px;
 }
+
+@media (max-width: 768px) {
+  .jobsSearch {
+    padding: 0 0.5rem;
+  }
+
+  .jobsSearch h1 {
+    font-size: clamp(1.8rem, 7vw, 2.2rem);
+    text-align: center;
+  }
+
+  .jobsSearch p {
+    font-size: 1rem;
+    text-align: center;
+    padding: 0 0.5rem;
+  }
+
+  .jobsSearch form {
+    padding: 0;
+  }
+
+  .searchBar {
+    padding: 5px 8px 5px 12px;
+    gap: 0.25rem;
+  }
+
+  .searchInput {
+    font-size: 0.95rem;
+    padding: 0.7rem 0.25rem;
+  }
+
+  .searchInput::placeholder {
+    font-size: 0.85rem;
+  }
+
+  .searchFilters {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 0.5rem;
+  }
+
+  .searchFilters select,
+  .searchFilters button {
+    width: 100%;
+    min-height: 44px;
+  }
+}
