@@ -1,53 +1,54 @@
-<img src="./src/assets/portada.png" alt="Portada del proyecto" width="100%">
+<img src="./src/assets/portada.png" alt="DevJobs" width="100%">
+
 # 💼 DevJobs
 
-DevJobs es una aplicación web para buscar y consultar ofertas de empleo relacionadas con el sector tecnológico.
+DevJobs es una aplicación web desarrollada con React para la busqueda y consulta de empleos relacionada con el sector tecnológico.
 
-La aplicación permite buscar ofertas, aplicar filtros, consultar los detalles de cada puesto y guardar ofertas como favoritas. También incorpora un sistema de autenticación simulado y una interfaz responsive adaptada a ordenador, tablet y móvil.
-
----
+El proyecto permite buscar ofertas, aplicar diferentes filtros, consultar el detalle de cada puesto y guardar empleos como favoritos. También incorpora autenticación y registro simulados, rutas protegidas y una interfaz responsive adaptada a ordenador, tablet y móvil.
 
 ## 🚀 Demo
 
-👉 **[Ver DevJobs](https://abrahamgalvezv.github.io/DevJobs/)**
+👉 [Ver DevJobs](https://abrahamgalvezv.github.io/DevJobs/)
 
 ---
 
-## 📸 Características principales
+## ✨ Funcionalidades
 
 - 🔎 Búsqueda de ofertas de empleo.
 - 🧩 Filtros por tecnología, modalidad y nivel.
-- 📄 Página de detalle de cada oferta.
+- 📄 Detalle individual de cada oferta.
 - ❤️ Sistema de favoritos.
-- 👤 Sistema de inicio de sesión simulado.
-- 📝 Registro de usuario simulado.
+- 👤 Login simulado.
+- 📝 Registro simulado.
+- 🔐 Rutas protegidas para el perfil.
 - 📌 Contador de ofertas favoritas.
+- 📄 Paginación de resultados.
 - 📱 Diseño responsive.
 - 🍔 Menú hamburguesa para dispositivos móviles.
-- 📄 Paginación de resultados.
-- ⚡ Interfaz dinámica mediante React.
-- 🔄 Estados de carga y errores.
+- ⚡ Carga diferida de páginas.
+- 🔄 Estados de carga y error.
 - 🎯 Navegación mediante React Router.
+- 🌐 Consumo de una API externa.
 
 ---
 
-## 🛠️ Tecnologías utilizadas
+## 🛠️ Tecnologías
 
 ### Frontend
 
-- **React**
-- **JavaScript**
-- **Vite**
-- **CSS Modules**
-- **React Router**
+- React
+- JavaScript
+- Vite
+- CSS Modules
+- React Router
 
-### Estado
+### Gestión del estado
 
-- **Zustand**
+- Zustand
 
 ### API
 
-La aplicación obtiene las ofertas de empleo desde una API externa:
+Las ofertas de empleo se obtienen desde:
 
 **JSCamp API**
 
